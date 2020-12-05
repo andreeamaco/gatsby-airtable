@@ -4,10 +4,10 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Introverted Marketer`,
-    description: `Introverted Marketer`,
+    title: `Gatsby Airtable`,
+    description: `Gatsby Airtable`,
     author: `Andreea Macoveiciuc`,
-    siteUrl: `https://www.introvert-marketer.com`,
+    siteUrl: `https://festive-kepler-9d8952.netlify.app/`,
   },
   plugins: [
     {
@@ -22,7 +22,7 @@ module.exports = {
       options: {
         name: `Gatsby Airtable`,
         short_name: `Gatsby Airtable`,
-        start_url: `https://www.introvert-marketer.com`,
+        start_url: `https://festive-kepler-9d8952.netlify.app/`,
         display: `minimal-ui`,
         icon: `./static/favicon.ico`, // This path is relative to the root of the site.
         crossOrigin: `use-credentials`,
