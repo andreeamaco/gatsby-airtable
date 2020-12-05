@@ -75,7 +75,6 @@ handleSubmit(event) {
   fetch(`https://api.airtable.com/v0/appWZOog67McA97vM/Main`, {
     method: "POST",
     body: final_data,
-    credentials: 'include',
     headers: {
       "Authorization": `Bearer ${AIRTABLE_API_KEY}`,
       "Content-Type": "application/json"
@@ -84,34 +83,9 @@ handleSubmit(event) {
   .then( 
     result => {
       console.log(result);
-      // window.location = "https://www.schoolofcontent.net/download-success/";
     }
   )
   .catch(error => console.log(error))
-
-
-// Option 3
-
-
-
-  // axios.post('https://api.airtable.com/v0/appWZOog67McA97vM/Main/', 
-  // final_data, 
-  // {
-  //   headers: {
-  //   'Authorization': `Bearer ${AIRTABLE_API}`,
-  //   'Accept': 'application/json', 
-  //   'Content-Type': 'application/json'
-  // }
-  // })
-  // .then(response => {
-  //   console.log(response);
-  //   // window.location = "https://www.schoolofcontent.net/download-success/";
-  // })
-  // .catch(error => {
-  //   console.log(error);
-  // })
-
-
 }
 
 render() {

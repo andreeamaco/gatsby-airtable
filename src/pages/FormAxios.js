@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+require("dotenv").config();
 
 const FormButton = ({ buttonText, buttonLink }) => (
   <button to={buttonLink}>{buttonText}</button>

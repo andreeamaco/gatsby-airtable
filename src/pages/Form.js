@@ -56,14 +56,14 @@ handleSubmit(event) {
 
   var Airtable = require('airtable');
   
-  Airtable.configure({
-    endpointUrl: 'https://api.airtable.com',
-    apiKey: `${process.env.AIRTABLE_API_KEY}`
-  });
+  // Airtable.configure({
+  //   endpointUrl: 'https://api.airtable.com',
+  //   apiKey: `${process.env.AIRTABLE_API_KEY}`
+  // });
 
-  var base = Airtable.base('appWZOog67McA97vM');
+  // var base = Airtable.base('appWZOog67McA97vM');
 
-  // var base = new Airtable({apiKey: `${process.env.AIRTABLE_API_KEY}`}).base('appWZOog67McA97vM');
+  var base = new Airtable({apiKey: `${process.env.AIRTABLE_API_KEY}`}).base('appWZOog67McA97vM');
   
   base('Main').create([
     {
