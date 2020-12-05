@@ -70,7 +70,7 @@ handleSubmit(event) {
   }
 
   let final_data = JSON.stringify(data);
-  const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
+  const GATSBY_AIRTABLE_API_KEY = process.env.GATSBY_AIRTABLE_API_KEY;
   
   fetch(`https://api.airtable.com/v0/appWZOog67McA97vM/Main`, {
     method: "POST",
