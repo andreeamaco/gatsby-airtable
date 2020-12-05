@@ -76,7 +76,7 @@ handleSubmit(event) {
     method: "POST",
     body: final_data,
     headers: {
-      "Authorization": `Bearer ${AIRTABLE_API_KEY}`,
+      "Authorization": `Bearer ${GATSBY_AIRTABLE_API_KEY}`,
       "Content-Type": "application/json"
     },
   })

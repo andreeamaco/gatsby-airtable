@@ -71,23 +71,22 @@ handleSubmit(event) {
   }
 
   let final_data = JSON.stringify(data);
-  const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
   
 
-  axios.post('https://api.airtable.com/v0/appWZOog67McA97vM/Main/', 
+  axios.post(`https://api.airtable.com/v0/appWZOog67McA97vM/Main`, 
   final_data, 
   {
     headers: {
-    'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+    'Authorization': `Bearer ${process.env.GATSBY_AIRTABLE_API_KEY}`,
     'Accept': 'application/json', 
     'Content-Type': 'application/json'
   }
   })
   .then(response => {
-    console.log(response);
+    console.log(`${response} ${process.env.GATSBY_AIRTABLE_API_KEY}`);
   })
   .catch(error => {
-    console.log(error);
+    console.log(`${error} ${process.env.GATSBY_AIRTABLE_API_KEY}`);
   })
 
 
