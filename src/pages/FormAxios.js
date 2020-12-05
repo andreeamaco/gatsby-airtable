@@ -5,7 +5,7 @@ const FormButton = ({ buttonText, buttonLink }) => (
   <button to={buttonLink}>{buttonText}</button>
 )
 
-class AirtableForm extends React.Component { 
+class FormAxios extends React.Component { 
 
 constructor(props) {
   super(props);
@@ -54,40 +54,42 @@ updateAgreement(event) {
 handleSubmit(event) {
   event.preventDefault();
 
-  var Airtable = require('airtable');
-  
-  Airtable.configure({
-    endpointUrl: 'https://api.airtable.com',
-    apiKey: `${process.env.AIRTABLE_API_KEY}`
-  });
+  let data = {
+    "records": [
+      {
+        "fields": {
+          "First name": this.state.firstname,
+          "Last name": this.state.lastname,
+          "Email": this.state.email,
+          "Form name": this.props.formName,
+          "Agree": this.state.agree       
+        },
+      },
+    ],
+    typecast: true 
+  }
 
-  var base = Airtable.base('appWZOog67McA97vM');
-
-  // var base = new Airtable({apiKey: `${process.env.AIRTABLE_API_KEY}`}).base('appWZOog67McA97vM');
+  let final_data = JSON.stringify(data);
+  const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
   
-  base('Main').create([
-    {
-      "fields": {
-        "First name": this.state.firstname,
-        "Last name": this.state.lastname,
-        "Email": this.state.email,
-        "Form name": this.props.formName,
-        "Agree": this.state.agree
-      }
-    }
-  ], 
-  { 
-    typecast: true
-  }, 
-  function(err, records) {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    records.forEach(function (record) {
-      console.log(record.getId());
-    });
-  });
+
+  axios.post('https://api.airtable.com/v0/appWZOog67McA97vM/Main/', 
+  final_data, 
+  {
+    headers: {
+    'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+    'Accept': 'application/json', 
+    'Content-Type': 'application/json'
+  }
+  })
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.log(error);
+  })
+
+
 }
 
 render() {
@@ -141,4 +143,4 @@ render() {
 }
 }
 
-export default AirtableForm;
+export default FormAxios;
